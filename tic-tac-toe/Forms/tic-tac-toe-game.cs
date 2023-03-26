@@ -17,6 +17,12 @@ namespace tic_tac_toe.Forms
             InitializeComponent();
         }
 
+        // Moving the form
+        private bool isDragging = false;
+        private Point lastCursor;
+        private Point lastForm;
+
+        // Game variables
         int clickCount = 0;
         int xWin = 0;
         int yWin = 0;
@@ -178,6 +184,30 @@ namespace tic_tac_toe.Forms
         private void tic_tac_toe_game_Load(object sender, EventArgs e)
         {
             ClearGame();
+        }
+
+
+        private void tic_tac_toe_game_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDragging = true;
+            lastCursor = Cursor.Position;
+            lastForm = this.Location;
+        }
+
+        private void tic_tac_toe_game_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                int xDiff = Cursor.Position.X - lastCursor.X;
+                int yDiff = Cursor.Position.Y - lastCursor.Y;
+
+                this.Location = new Point(lastForm.X + xDiff, lastForm.Y + yDiff);
+            }
+        }
+
+        private void tic_tac_toe_game_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
         }
 
         private void button_1_Click(object sender, EventArgs e)
@@ -364,5 +394,6 @@ namespace tic_tac_toe.Forms
                 ClearGame();
             }
         }
+
     }
 }

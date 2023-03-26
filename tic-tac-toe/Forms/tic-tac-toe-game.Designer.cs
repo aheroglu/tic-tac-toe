@@ -273,6 +273,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "tic_tac_toe_game";
             this.Load += new System.EventHandler(this.tic_tac_toe_game_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tic_tac_toe_game_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tic_tac_toe_game_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tic_tac_toe_game_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
